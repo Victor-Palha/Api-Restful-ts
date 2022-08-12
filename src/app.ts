@@ -6,6 +6,9 @@ const app = express()
 
 //JSON middleware
 app.use(express.json())
+//Router
+import router from './router'
+app.use("/api/", router)
 
 // Config PORT
 const port = config.get<number>("port")

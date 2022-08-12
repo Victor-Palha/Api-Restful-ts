@@ -18,7 +18,7 @@
 * Let's run our project in command line, call the script *dev*: `npm run dev`
 
 ***
-## integrating express
+## Integrating express
 ***
 * Let's start express on `app.ts` importing the modules, create middleware to accept JSON data and start the server.
     * We are using the module *config*, then we gonna create one folder called `config` and create a file called `default.ts` to store sensitive variables.
@@ -48,3 +48,31 @@ app.listen(port,async()=>{
 })
 ```
 
+***
+## API test routes
+***
+* To start with routes, we gonna create a new file called `router.ts` inside the file *src*.
+* With the file created, let's import functionalities from express, start the code creating one variable to recibe the this functionalities.
+![router](img-reposi/router.png)
+
+* Okay! now we wanna create the first router from this project!
+    * **First i gonna to remember you that this is a outer filer, so we need to export to our main file!**
+* The syntax is not much difference that we already seen, but we need to export each one of ours routers! like that:
+```ts
+export default router.get("/test", (req:Request, res:Response)=>{
+    res.status(200).send("API working!")
+})
+``` 
+* Your file should be like this:
+![router2](img-reposi/router2.png)
+
+* Now to finish, let's back to our main file `app.ts` and import our router!
+```ts
+//Router
+import router from './router'
+app.use("/api/", router)
+
+```
+* Now, all routers arriving from the `routes` receives the prefix /api/
+* Your `app.ts` should be like this:
+![mainFile](img-reposi/main.png)
