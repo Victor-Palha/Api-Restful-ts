@@ -1,0 +1,39 @@
+{
+  "name": "api-restful-ts",
+  "version": "1.0.0",
+  "description": "*** **Install packages and dependencies** *** * Start the project with command line.     * `npm init -y` & ` tsc --init` * Now, we gonna install the dependencies from development and separate they from dependencies like **express**     * `npm install config dotenv express express-validator mongoose morgan winston` - (This dependencies are not from development state)     * ``",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Victor-Palha/Api-Restful-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Victor-Palha/Api-Restful-ts/issues"
+  },
+  "homepage": "https://github.com/Victor-Palha/Api-Restful-ts#readme",
+  "dependencies": {
+    "config": "^3.3.7",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.5.2",
+    "morgan": "^1.10.0",
+    "winston": "^3.8.1"
+  },
+  "devDependencies": {
+    "@types/config": "^3.3.0",
+    "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.7.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  }
+}
