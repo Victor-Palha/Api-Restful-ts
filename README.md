@@ -76,3 +76,34 @@ app.use("/api/", router)
 * Now, all routers arriving from the `routes` receives the prefix /api/
 * Your `app.ts` should be like this:
 ![mainFile](img-reposi/main.png)
+***
+## Creating database with MongodoDB Atlas
+***
+* First thing you need to do is crate a account on MongoDB [here](https://www.mongodb.com/atlas/database)
+* Then you need create a database on mongoDB Atlas, i don't gonna explain all to you how to do this, but you can read how to do on offical documentation from mongoDB [here](https://www.mongodb.com/docs/atlas/atlas-ui/databases/) 
+* BUT i gonna show you how to do it in a simple way!
+
+Create a **new project**
+1. ![tuto](img-reposi/mongo/1.jpg)
+Choice a **name** and click in **next**
+2. ![tuto](img-reposi/mongo/2.jpg)
+Click in **create project**
+3. ![tuto](img-reposi/mongo/3.jpg)
+Then in **DATABASES**, click in **Build Database**
+4. ![tuto](img-reposi/mongo/4.jpg)
+Choice the plain **free**
+5. ![tuto](img-reposi/mongo/5.jpg)
+Just click in **Create Cluster**
+6. ![tuto](img-reposi/mongo/6.jpg)
+Go to **Network Acess**
+7. ![tuto](img-reposi/mongo/7.jpg)
+Click in **Add IP Address**, then click in **Add Current IP Adress** and **confirm**
+8. ![tuto](img-reposi/mongo/8.jpg)
+Go to **Database Acess** and click in **Add New Database User**
+9. ![tuto](img-reposi/mongo/9.jpg)
+Choice one name to our user and click in **Autogenerate Secure Password**, copy the password and user name to one safe place... We gonna need this later
+10. ![tuto](img-reposi/mongo/10.jpg)
+In the end just gonna click in **Add User**
+11. ![tuto](img-reposi/mongo/11.jpg)
+
+I strongly recommend you reed the documentation to know what are you doing!
