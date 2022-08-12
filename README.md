@@ -83,27 +83,93 @@ app.use("/api/", router)
 * Then you need create a database on mongoDB Atlas, i don't gonna explain all to you how to do this, but you can read how to do on offical documentation from mongoDB [here](https://www.mongodb.com/docs/atlas/atlas-ui/databases/) 
 * BUT i gonna show you how to do it in a simple way!
 
-Create a **new project**
-1. ![tuto](img-reposi/mongo/1.jpg)
-Choice a **name** and click in **next**
-2. ![tuto](img-reposi/mongo/2.jpg)
-Click in **create project**
-3. ![tuto](img-reposi/mongo/3.jpg)
-Then in **DATABASES**, click in **Build Database**
-4. ![tuto](img-reposi/mongo/4.jpg)
-Choice the plain **free**
-5. ![tuto](img-reposi/mongo/5.jpg)
-Just click in **Create Cluster**
-6. ![tuto](img-reposi/mongo/6.jpg)
-Go to **Network Acess**
-7. ![tuto](img-reposi/mongo/7.jpg)
-Click in **Add IP Address**, then click in **Add Current IP Adress** and **confirm**
-8. ![tuto](img-reposi/mongo/8.jpg)
-Go to **Database Acess** and click in **Add New Database User**
-9. ![tuto](img-reposi/mongo/9.jpg)
-Choice one name to our user and click in **Autogenerate Secure Password**, copy the password and user name to one safe place... We gonna need this later
-10. ![tuto](img-reposi/mongo/10.jpg)
-In the end just gonna click in **Add User**
-11. ![tuto](img-reposi/mongo/11.jpg)
+1. Create a **new project**
+![tuto](img-reposi/mongo/1.jpg)
+
+2. Choice a **name** and click in **next**
+![tuto](img-reposi/mongo/2.jpg)
+
+3. Click in **create project**
+![tuto](img-reposi/mongo/3.jpg)
+
+4. Then in **DATABASES**, click in **Build Database**
+![tuto](img-reposi/mongo/4.jpg)
+
+5. Choice the plain **free**
+![tuto](img-reposi/mongo/5.jpg)
+
+6. Just click in **Create Cluster**
+![tuto](img-reposi/mongo/6.jpg)
+
+7. Go to **Network Acess**
+![tuto](img-reposi/mongo/7.jpg)
+
+8. Click in **Add IP Address**, then click in **Add Current IP Adress** and **confirm**
+![tuto](img-reposi/mongo/8.jpg)
+
+9. Go to **Database Acess** and click in **Add New Database User**
+![tuto](img-reposi/mongo/9.jpg)
+
+10. Choice one name to our user and click in **Autogenerate Secure Password**, copy the password and user name to one safe place... We gonna need this later
+![tuto](img-reposi/mongo/10.jpg)
+
+11. In the end just gonna click in **Add User**
+![tuto](img-reposi/mongo/11.jpg)
 
 I strongly recommend you reed the documentation to know what are you doing!
+
+***
+## connecting to database
+***
+First let's to mongoDB website and copy the URL from our database!
+1. Go to **databases** and click on **Connect**
+![db](img-reposi/mongo2/1.jpg)
+2. Then click in **Connect your application**
+![db](img-reposi/mongo2/2.jpg)
+3. Finally **copy the URL** from your database
+![db](img-reposi/mongo2/3.jpg)
+
+* Creating configs to database
+    * Now we have the URL from ours database, so lets go to file of configurations that we created previously `config/default.ts`.
+    * Inside of object he already created, let's create a new variable called `dbUrl` and it gonna receive our URL.
+        * `dbUrl: "mongodb+srv://AshPalha:<password>@cluster0.xdzpwwf.mongodb.net/?retryWrites=true&w=majority"`
+    * ![db](img-reposi/mongo2/dbconfig.png)
+        * Then we gonna change were is `<passworld>` to yours password that we generate!
+* Creating connection to database
+    * Now let's create one file called `db.ts` in `config` folder.
+    * Import two modules we installed on the beginning of the project: `mongoose` and `config`
+        * ```ts
+            import mongoose from "mongoose"
+            import config from "config"
+            ```
+    * Now we gonna create one *async function* to connect, called **connect**
+    * Then we gonna catch our URL to database using the module `config`.
+        * `const url = config.get<string>("dbUrl")`
+    * Done it we create a Try Catch to connection to tratament for errors!
+        * ```ts
+                try {
+            
+                } catch (err) {
+                    
+                }
+        ```
+    * Inside the Try, we gonna call from mongoose and use one method called `connect` and pass our URL as parameter.
+        * ```ts
+            await mongoose.connect(url)
+            console.log("Successful connection to database!")
+        ```
+    * Inside the catch, we just gonna make a log to the error!
+        * ```ts
+            console.log("Error to connect to database")
+            console.log(`Error: ${err}`)
+        ```
+    * Now we export the function!
+        * `export default connect`
+    * ![db](img-reposi/mongo2/connection.png)
+* Importing to main file!
+    * Inside of `app.ts` we gonna make two modifications.
+    * First we gonna import the file `db.ts`.
+        * `import db from "../config/db"`
+    * Second on the `listen` we gonna call db as `await`, in this way the application just gone run if was connect to the database!
+    * ![db](img-reposi/mongo2/import.jpg)
+***
