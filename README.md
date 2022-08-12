@@ -79,7 +79,7 @@ app.use("/api/", router)
 ***
 ## Creating database with MongodoDB Atlas
 ***
-* First thing you need to do is crate a account on MongoDB [here](https://www.mongodb.com/atlas/database)
+* First thing you need to do is create a account on MongoDB [here](https://www.mongodb.com/atlas/database)
 * Then you need create a database on mongoDB Atlas, i don't gonna explain all to you how to do this, but you can read how to do on offical documentation from mongoDB [here](https://www.mongodb.com/docs/atlas/atlas-ui/databases/) 
 * BUT i gonna show you how to do it in a simple way!
 
