@@ -1,3 +1,6 @@
+//DOTENV
+require("dotenv").config()
+
 //console.log("Hello World from Node")
 import express from "express"
 import config from "config"

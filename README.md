@@ -173,3 +173,37 @@ First let's to mongoDB website and copy the URL from our database!
     * Second on the `listen` we gonna call db as `await`, in this way the application just gone run if was connect to the database!
     * ![db](img-reposi/mongo2/import.jpg)
 ***
+## Creating environment variables
+***
+* We gonna create one file to keep yours sensitives varibles, like API key, Database password etc...
+    * First on root, create one file called `.env`.
+    ![dotenv](img-reposi/env.png)
+    * Inside of file we keep any variable what we want.
+    * In your case, lets keep the *username* and *password* from database for now
+    * Observation: **The variables always are in upcase**
+        * Like that: `VAR_NAME=data`
+    * Observation 2: **If you want to post your pessoal project on GitHub, on `.gitignore` put the file `.env` inside! I don't gonna do that because i want you to learn from this!**
+    * For you see better, this is the code:
+    ![dotenv](img-reposi/env2.png)
+    * Remember to change this variables to yours, this variables are from my fictional database from this repository!
+* Now let's go to `config/default.ts` and call ours environment variables!
+    * But first we need to call the module `dotenv`, so let's go to `src/app.ts` and in the first line call the module.
+        * `require("dotenv").config()`
+        ![dotenv](img-reposi/dotenv.png)
+    * To call the variables from file `.env` in `config/default.ts` we use the function `process.env.NAME_FROM_VARIABLE`
+    * We gonna keep the two of yours variables on constants
+        * Like that: 
+        ```ts
+            const db_name = process.env.DB_NAME
+            const db_pass = process.env.DB_PASS
+        ```
+    * Then in variable `dbUrl` let's concatenate on the string
+    ```ts
+    const db_name = process.env.DB_NAME
+    const db_pass = process.env.DB_PASS
+    export default {
+        port: 3000,
+        dbUrl: `mongodb+srv://${db_name}:${db_pass}@cluster0.xdzpwwf.mongodb.net/?retryWrites=true&w=majority`
+    }
+    ```
+    ![dotenv](img-reposi/concatenate.png)
