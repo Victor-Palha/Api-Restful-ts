@@ -305,4 +305,4 @@ First let's to mongoDB website and copy the URL from our database!
 * To finish we can import this in any file we want.
     * To call Logger, we replace the `console.log()` to `Logger.info() / Logger.error() / Logger.warn()` and etc...
     ![logger](img-reposi/logger/logger3.png)
-    ![logger](img-reposi/logger/logger5.png)
+    ![logger](img-reposi/logger/loger5.png)
