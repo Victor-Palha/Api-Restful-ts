@@ -349,3 +349,31 @@ First let's to mongoDB website and copy the URL from our database!
         * `app.use(morganMiddleware)`
     * To test i going use Thunder Client to make HTTP request to our API,
     ![thunder-client](img-reposi/morgan.jpg)
+***
+## Creating Model
+***
+* Working with MVC (Model View Controller)
+    * To start lets configure our *models*
+    * Let's create one folder on `src` called `models`
+    * let's insert the entities that will allude to our collections of our database
+* Start Model
+    * In the folder what we create, lets create one file called `Movie.ts`
+    * Whenever we create a new model on TypeScript we going import `model` and `Schema` from mongoose if you are using `mongoDB`
+        * `import {model, Schema} from "mongoose"`
+* Creating Schema
+    * Let's create a Schema! This schema is a object with all properties we gonna insert on database
+    ```ts
+    const movieSchema = new Schema({
+        title: {type: String},
+        rating: {type: Number},
+        description: {type: String},
+        director: {type: String},
+        stars: {type: Array},
+        poster: {type: String}
+    },
+    {
+        timestamps: true
+    })
+    ```
+    * Now we export.
+        * `export const MovieModel = model("Movie", movieSchema)`
