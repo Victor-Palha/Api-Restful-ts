@@ -207,3 +207,102 @@ First let's to mongoDB website and copy the URL from our database!
     }
     ```
     ![dotenv](img-reposi/concatenate.png)
+***
+## Integration of Wiston
+***
+* To start with Wiston, we need understand what are this!
+    * We gonna use Wiston to improve ours LOGS on terminal
+
+* So let's create a new file called `logger.ts` on folder `config`
+    * Now let's import theses modules: `config` and `winston`
+    ![looger](img-reposi/logger/logger1.png)
+    * You can read more about **Winston** [here](https://kimsereylam.com/typescript/2021/12/03/winston-logger-with-typescript.html)
+
+* Now we go to `config/default.ts` and we gonna create one other attribute on ours object
+    * The new attribute is called `env` and receive on string on value `development`.
+        * `env: "development"`
+        * ![logger](img-reposi/logger/logger2.png)
+
+* Done this, we go back to file `logger` and we gonna create a series of configs that gonna describe how our application will behave.
+    * First we create a object called `levels` that gonna describe the level of errors of ours aplication!
+    ```ts
+    const levels = {
+        error: 0,
+        warn: 1,
+        info: 2,
+        http: 3,
+        debug: 4
+    }
+    ```
+* Now let's create one variable what's going to call one function to receive what environment we are working!
+    * The variable is called `level` and gonna receive ours `env` from `config.ts` and validate the information
+    ```ts
+    const level = ()=>{
+        const env = config.get<string>("env") || "development"
+        const isDevelopment = env === "development"
+        return isDevelopment ? "debug" : "warn"
+    }
+    ```
+    * The function going to return or `debug` or `warn` to us!
+
+* Now we going to create one object to receive colors for ours error
+    * The object is equal to `levels` but going receive string of colors
+    ```ts
+    const colors = {
+        error: "red",
+        warn: "yellow",
+        info: "green",
+        http: "magenta",
+        debug: "white"
+    }
+    ```
+    * Now we add this colors on Winston.
+        * `wiston.addColors(colors)`
+
+* Now we going to format ours log messages.
+    * This format are from the log message that going to appers in ours terminal
+    * Let's put the time, color and message
+    ```ts
+    const format = winston.format.combine(
+        winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+        winston.format.colorize({ all: true }),
+        winston.format.printf(
+            (info) => `${info.timestamp} - ${info.level}: ${info.message}`
+        )
+    )
+    ```
+
+* Now we gonna create others constants to create erros files
+    * We going to use one method from Winston called `transports`.
+    * This transports are to create files from erros, we can organize ours erros by folders if we want.
+    ```ts
+    const transports = [
+        new winston.transports.Console(),
+        new winston.transports.File({
+            filename: "logs/erros/error.log",
+            level: "error"
+        }),
+        new winston.transports.File({filename: "logs/all.log",})
+    ]
+    ```
+
+* Okay, we create where the logs are, now we need to instance all of this!
+    * We pass one object with all variables that we create!
+        1. level
+        2. levels
+        3. format
+        4. transports
+    ```ts
+    const Logger = winston.createLogger({
+        level: level(),
+        levels,
+        format,
+        transports
+    })
+    ```
+    * Now we export the `Logger`
+
+* To finish we can import this in any file we want.
+    * To call Logger, we replace the `console.log()` to `Logger.info() / Logger.error() / Logger.warn()` and etc...
+    ![logger](img-reposi/logger/logger3.png)
+    ![logger](img-reposi/logger/logger5.png)

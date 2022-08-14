@@ -1,5 +1,7 @@
 //DOTENV
 require("dotenv").config()
+//Logger
+import Logger from "../config/logger"
 
 //console.log("Hello World from Node")
 import express from "express"
@@ -20,5 +22,5 @@ const port = config.get<number>("port")
 
 app.listen(port,async()=>{
     await db()
-    console.log(`Server online on port: ${port}`)
+    Logger.info(`Server online on port: ${port}`)
 })
