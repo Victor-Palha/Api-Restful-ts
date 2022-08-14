@@ -6,5 +6,11 @@ import Logger from "../../config/logger"
 
 //Creation
 export async function createMovie(req:Request, res:Response){
-    return res.status(200).send("Controller Working")
+    try {
+        const data = req.body
+        const movie = await MovieModel.create(data)
+        return res.status(201).json(movie)
+    } catch (err:any) {
+        Logger.error(`Error: ${err.message}`)
+    }
 }

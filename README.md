@@ -419,3 +419,52 @@ First let's to mongoDB website and copy the URL from our database!
         ```
         * Now the link between our controllers and routers are ready!
         * Then we can configure ours controller properly!
+***
+## Insert datas
+***
+* Let's go `controllers/movieControllers.ts`.
+* inside of ours function, let's delete the return and replace to one **Try/Catch**.
+    ```ts
+    //Creation
+    export async function createMovie(req:Request, res:Response){
+        try {
+            
+        } catch (err) {
+            
+        }
+    }
+    ```
+    * Inside of try let's create a variable to get the data from `request`.
+        * `const data = req.body`
+    * Now let's create other variable to receive our Model and insert in our database the `data`.
+        * `const movie = awai MovieModel.create(data)`
+    * Then we going to return one status code **201** and pass a JSON message of `data`, like that:
+        * `return res.status(201).json(data)`
+        ```ts
+        export async function createMovie(req:Request, res:Response){
+            try {
+                const data = req.body
+                const movie = await MovieModel.create(data)
+                return res.status(201).json(movie)
+            } catch (err) {
+                
+            }
+        }
+        ```
+* Catch
+    * Inside of `catch` we going pass a error log from Logger and type the error as `any`
+    * The final code should be like that:
+    ```ts
+    export async function createMovie(req:Request, res:Response){
+        try {
+            const data = req.body
+            const movie = await MovieModel.create(data)
+            return res.status(201).json(movie)
+        } catch (err:any) {
+            Logger.error(`Error: ${err.message}`)
+        }
+    }
+    ```
+    * Now you can test using POSTMAN, ThunderClient or any other tool! In my case i'll use Thunder Client!
+    ![insert](img-reposi/insert.png)
+    ![insert](img-reposi/databaseColletions.png)
