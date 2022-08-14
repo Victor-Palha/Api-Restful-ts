@@ -306,3 +306,46 @@ First let's to mongoDB website and copy the URL from our database!
     * To call Logger, we replace the `console.log()` to `Logger.info() / Logger.error() / Logger.warn()` and etc...
     ![logger](img-reposi/logger/logger3.png)
     ![logger](img-reposi/logger/loger5.png)
+***
+## Configurating Morgan
+***
+* Start with Morgan.
+    * The *Morgan* will make our log be more complete
+    * First we going to create one folder to middleware on `src`
+    * Then creating one file called `morganMiddleware.ts`
+    * Now we going import inside the file ours modules.
+    ```ts
+    import morgan, {StreamOptions} from "morgan";
+    import config from "config"
+    import Logger from "../../config/logger";
+    ```
+* Creating config to morgan
+    * After we import ours modules, let's create objects to read http requests
+    ```ts
+    const stream: StreamOptions = {
+        write: (message)=>Logger.http(message)
+    }
+    ```
+    * After this, let's create one validation to skip if are in development environment
+    ```ts
+    const skip = ()=>{
+        const env = config.get<string>("env") || "development"
+        return env !== "development"
+    }
+    ```
+    * Now we going create one instance of class morgan and join the valiables that we create and in the end we export.
+    ```ts
+    const morganMiddleware = morgan(
+        ":method :url :status :res[content-length] - :response-time ms",
+        {stream, skip}
+    )
+
+    export default morganMiddleware
+    ```
+* Import morgan to other files
+    * Go to our main file `app.ts` and import morgan.
+        * `import morganMiddleware from "./middleware/morganMiddleware"`
+    * Now let's make this middleware be in level of application!
+        * `app.use(morganMiddleware)`
+    * To test i going use Thunder Client to make HTTP request to our API,
+    ![thunder-client](img-reposi/morgan.jpg)

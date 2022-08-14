@@ -35,3 +35,7 @@
 2022-08-13 21:13:35 - [31merror[39m: [31mError to connect to database[39m
 2022-08-13 21:13:38 - [32minfo[39m: [32mSuccessful connection to database![39m
 2022-08-13 21:13:38 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-14 09:21:22 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-14 09:21:22 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-14 09:21:46 - [32mhttp[39m: [32mGET /api/test 200 15 - 1.952 ms[39m
+[32m[39m

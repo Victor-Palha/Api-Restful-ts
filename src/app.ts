@@ -2,6 +2,8 @@
 require("dotenv").config()
 //Logger
 import Logger from "../config/logger"
+//Middlewares
+import morganMiddleware from "./middleware/morganMiddleware"
 
 //console.log("Hello World from Node")
 import express from "express"
@@ -9,10 +11,13 @@ import config from "config"
 
 const app = express()
 
-//JSON middleware
+//Aplication level middleware
 app.use(express.json())
+app.use(morganMiddleware)
+
 //Database
 import db from "../config/db"
+
 //Router
 import router from './router'
 app.use("/api/", router)
