@@ -39,3 +39,11 @@
 2022-08-14 09:21:22 - [32minfo[39m: [32mServer online on port: 3000[39m
 2022-08-14 09:21:46 - [32mhttp[39m: [32mGET /api/test 200 15 - 1.952 ms[39m
 [32m[39m
+2022-08-14 10:20:59 - [32mhttp[39m: [32mGET /api/movie 404 148 - 1.560 ms[39m
+[32m[39m
+2022-08-14 10:24:42 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-14 10:24:42 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-14 10:24:48 - [32mhttp[39m: [32mGET /api/test 200 15 - 2.017 ms[39m
+[32m[39m
+2022-08-14 10:24:55 - [32mhttp[39m: [32mPOST /api/movie 200 18 - 0.638 ms[39m
+[32m[39m

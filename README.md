@@ -377,3 +377,45 @@ First let's to mongoDB website and copy the URL from our database!
     ```
     * Now we export.
         * `export const MovieModel = model("Movie", movieSchema)`
+***
+## Creating Controller
+***
+* Start with controllers
+    * In `src` we going to create a folder called `controllers` and inside of folder, let's create one file called `movieControllers.ts`
+    * Inside of this file we going to work with express, so let's import it
+        * `import {Request, Response} from "express"`
+    * After this, let's import our Model that we create in last session.
+        * `import { MovieModel } from "../models/Movie"`
+    * Now to finish ours imports, let's import our `Logger`
+    ```ts
+    import {Request, Response} from "express"
+    //Model
+    import { MovieModel } from "../models/Movie"
+    // Logger
+    import Logger from "../../config/logger"
+    ```
+* Funtions
+    * Now we going create ours functions to creation, reading and etc...
+    * Let's start with one creation function for the movie!
+    * All functions going to be **Async** because we going work with database then we need to hold they response to proceed
+* Creation Function and Link to Router
+    * Let's create one simple function to test
+    ```ts
+    export async function createMovie(req:Request, res:Response){
+        return res.status(200).send("Controller Working")
+    }
+    ```
+    * Now let's go to file `src/router.ts`
+        * Then let's configurate your router to new router.
+        * In export router, let's create a new POST router and call ours function that we create
+        ```ts
+        //exporting routers
+        export default router
+            .get("/test", (req:Request, res:Response)=>{
+                res.status(200).send("API is working!")
+            })
+            //New
+            .post("/movie", createMovie)
+        ```
+        * Now the link between our controllers and routers are ready!
+        * Then we can configure ours controller properly!
