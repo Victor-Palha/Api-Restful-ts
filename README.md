@@ -469,3 +469,64 @@ First let's to mongoDB website and copy the URL from our database!
     ![insert](img-reposi/insert.png)
     ![insert](img-reposi/databaseColletions.png)
     (Okay, i wrote wrong Fellowship... you can judge me!)
+***
+## Express-validation
+***
+* We going create middleware to validation now using Express-validation
+* This middleware will serve as a "joker" to deal with all validations of our system, after we will create validation to each one of ours entities.
+* Let's start
+    * In `middleware` folder, let's create a file called `handleValidation.ts`.
+    * After creation let's import the modules.
+        * ```ts
+            import { Request, Response, NextFunction } from "express"
+            import { validationResult } from "express-validator"
+        ```
+    * Now we'll create a middleware to take all `errors` from the next function that we will create and we'll treat they
+* Create Middleware
+    * Now let's create a *arrow function* in a variable called `validate`, like this:
+    ```ts
+    export const validate = (req:Request, res:Response, next:NextFunction)=>{
+        //code...
+    }
+    ```
+    * Inside of the function let's create a variable what's take erros from request, we going use the module *express-validator* on this variable
+        * `const errors = validationResult(req)`
+    * After this we will create a validation using `if` to see if our variable `erros` are empty or not.
+        * ```ts
+            if(errors.isEmpty()){
+                return next()
+            }
+        ```
+    * If are no erros on the application, the function `next()` is called and the application run normal!
+    * But if are erros... We going create one array of objects to rescue all erros and return to user one bad request *(422)* from server and show all erros!
+    * For theses erros we will use the method `map()` to go through all itens and push into our object.
+        * ```ts
+            export const validate = (req:Request, res:Response, next:NextFunction)=>{
+                const errors = validationResult(req)
+
+                if(errors.isEmpty()){
+                    return next()
+                }
+                //Creating array empty
+                const extratecErros: object[] = []
+                //Push all erros into our array
+                errors.array().map((err)=>{
+                    extratecErros.push({[err.param]: err.msg})
+                })
+                //Return a bad request
+                return res.status(422).json({
+                    erros: extratecErros
+                })
+            }
+        ```
+* Import middleware
+    * Let's go to `src/router.ts` and import our middleware
+        * `import { validate } from "./middleware/handleValidation"`
+    * Now let's put the `validate` inside the route `/movie`.
+    ```ts
+    export default router
+    .get("/test", (req:Request, res:Response)=>{
+        res.status(200).send("API is working!")
+    })
+    .post("/movie", validate, createMovie)
+    ```
