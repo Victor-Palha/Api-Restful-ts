@@ -530,3 +530,86 @@ First let's to mongoDB website and copy the URL from our database!
     })
     .post("/movie", validate, createMovie)
     ```
+***
+## Validating movies
+***
+* In this session we will finish the validation that we start in last session
+* Start validation
+    * Let's create another middleware `middleware/movieValidation.ts`
+    * To start the file let's import the `body` from express-validator and create a function with name `movieCreateValidation`.
+        * ```ts
+            import { body } from "express-validator"
+
+            export const movieCreateValidation = ()=>{
+                
+            }
+        ```
+    * Inside the function let's use the module `body` to make ours validation.
+        * You can read the documentation of express-validator [here](https://express-validator.github.io/docs/) and know all the methods of validation from this library.
+* Create first validation.
+    * Now we create the function, let's create a validation from the tittle of the movie.
+    * We will return a Array to the validation.
+    ```ts
+    export const movieCreateValidation = ()=>{
+        return[
+            body("title").isString().withMessage("The title is mandatory")
+        ]
+    }
+    ```
+    * This function get the title from the Request and validation if are String if not generate a error with message "The title is mandatory"
+    * This already are one validation and we can use import this on route that we will use, in ours case `src/router.ts` in router `/movie`.
+        * ```ts
+            .post("/movie", movieCreateValidation(),validate, createMovie)
+        ```
+    ![error](img-reposi/erro.png)
+    * What's appears here is the middleware handleValidation get the errors from movieCreateValidation and show to user!
+* Make better validations
+    * You know now how to make validations with `express-validator` but until now we just make a title validation, let's make others!
+    * As you probleby remember our Modal for database have this camps:
+    * ```ts
+        title: {type: String},
+        rating: {type: Number},
+        description: {type: String},
+        director: {type: String},
+        stars: {type: Array},
+        poster: {type: String}
+        ```
+    * So we can validate any one! let's start with `rating`.
+        * Just like the title we start the validate with `body("campName")`
+        * `body("rating").isNumeric().withMessage("The rating must be a number!")`
+        * The method `withMessage()` show the message if prerequisites are not being met
+* Custom validators
+    * With custom validators we can create one function inside the method `custom()` and make ours own validation.
+    * Let's import from `express-validator` the method `CustomValidator`.
+        * `import { body, CustomValidator } from "express-validator"`
+    * Now let's create our validation by function!
+    ```ts
+    const ratingNote: CustomValidator = (value:number)=>{
+        if(value < 0 || value > 10){
+            throw new Error("The rating should be between 0 to 10!")
+        }
+        return true
+    }
+    ```
+    * After we create the function, let's put on method `custom()`.
+    ```ts
+    export const movieCreateValidation = ()=>{
+        return[
+            body("title").isString().withMessage("The title is mandatory"),
+            body("rating").isNumeric().withMessage("The rating must be a number!").custom(ratingNote)
+        ]
+    }
+    ```
+* Finish validations
+    * To finish let's make validations to all camps from model inside the functions validation!
+    ```ts
+    export const movieCreateValidation = ()=>{
+        return[
+            body("title").isString().withMessage("The title is mandatory"),
+            body("rating").isNumeric().withMessage("The rating must be a number!").custom(ratingNote),
+            body("director").isString().withMessage("The director name is mandatory!"),
+            body("description").isString().withMessage("The description is mandatory"),
+            body("poster").isURL().withMessage("The poster must be URL!")
+        ]
+    }
+    ```

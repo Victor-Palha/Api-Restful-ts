@@ -103,3 +103,85 @@
 [32m[39m
 2022-08-14 21:00:28 - [32mhttp[39m: [32mPOST /api/movie 201 187 - 78.732 ms[39m
 [32m[39m
+2022-08-15 20:11:19 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:11:19 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:11:26 - [32mhttp[39m: [32mPOST /api/movie 422 46 - 4.921 ms[39m
+[32m[39m
+2022-08-15 20:26:24 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:26:24 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:26:32 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:26:32 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:26:37 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:26:37 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:26:54 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:26:54 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:26:57 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:26:57 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:27:04 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:27:04 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:31:43 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:31:43 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:31:45 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:31:45 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:32:11 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:32:11 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:32:18 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:32:18 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:32:33 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:32:33 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:32:41 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:32:41 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:32:51 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:32:51 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:32:53 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:32:53 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:32:58 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:32:58 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:33:16 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:33:16 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:33:21 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:33:21 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:33:26 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:33:26 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:33:28 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:33:28 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:34:10 - [32mhttp[39m: [32mPOST /api/movie 422 62 - 5.827 ms[39m
+[32m[39m
+2022-08-15 20:34:44 - [32mhttp[39m: [32mPOST /api/movie 422 53 - 1.109 ms[39m
+[32m[39m
+2022-08-15 20:39:39 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:39:39 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:39:42 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:39:42 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:39:46 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:39:46 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:39:50 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:39:50 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:39:53 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:39:53 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:40:02 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:40:02 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:40:04 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:40:04 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:40:18 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:40:18 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:40:19 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:40:19 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:40:30 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:40:30 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:40:51 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:40:51 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:41:55 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:41:55 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:42:14 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:42:14 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:42:20 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:42:20 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:42:21 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:42:21 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-15 20:42:25 - [32mhttp[39m: [32mPOST /api/movie 422 184 - 5.956 ms[39m
+[32m[39m
+2022-08-15 20:47:06 - [32mhttp[39m: [32mPOST /api/movie 201 803 - 93.742 ms[39m
+[32m[39m
+2022-08-15 20:47:43 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-15 20:47:43 - [32minfo[39m: [32mServer online on port: 3000[39m
