@@ -642,4 +642,56 @@ First let's to mongoDB website and copy the URL from our database!
     * Now let's create a GET router with dinamic url.
         * `.get("/movie/:id", findMovieById)`
     * And is WORKING!
-
+***
+## Get all movies
+***
+* To create one query to all datas from database with MongoDB is really simple.
+* Creating function
+    * In the same file that we create last function we will create a async function called `findAllMovies`, then make a Try/Catch just like the last function
+        * ```ts
+            export async function findAllMovies(req:Request, res:Response){
+                try{
+                    const movies = await MovieModel.find()
+                    return res.status(200).json(movies)
+                }catch(err:any){
+                    Logger.error(`Error: ${err.message}`)
+                }
+            }
+        ```
+    * When we use the method `find()` and we dont pass parameters, the mongoDB understand that we want all the datas.
+* Creating router
+    * After the creation go to our router file on src and import the function.
+        * `import { createMovie, findAllMovies, findMovieById } from "./controllers/`
+    * Now create a GET router called `movie`, we already have a router called `movie` but is a POST router and this is a GET.
+        * `.get("/movie", findAllMovies)`
+***
+## Remove movie by Id
+***
+* To remove a data from our database we will use the same structure from `findMovieById` function.
+* Create function
+    * ```ts
+        export async function deleteMovie(req:Request, res:Response){
+            try {
+                const id = req.params.id
+                const movie = await MovieModel.findById(id)
+                if(!movie){
+                    return res.status(404).json({error: "Movie not Found!"})
+                }else{
+                    await movie.delete()
+                    return res.status(200).json({message: "Movie deleted!"})
+                }
+            } catch (err: any) {
+                Logger.error(`Erro: ${err.message}`)
+            }
+        }
+        ```
+    * Notice in the end of *try* we use the method `delete()`, this method delete the data that we get from `findById()`
+    * Is the same structure that we use to get the movie by id
+* Create Router
+    * Now we will create a router using the `delete` http method.
+    * Go to `src/router.ts` and import the function `deleteMovie`.
+        * `import { createMovie, deleteMovie, findAllMovies, findMovieById } from "./controllers/movieControllers"`
+    
+    * Now let's create the router
+        * `.delete("/movie/:id", deleteMovie)`
+    * And it's ready!
