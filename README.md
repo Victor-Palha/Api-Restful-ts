@@ -725,8 +725,8 @@ First let's to mongoDB website and copy the URL from our database!
 * Creating router
     * Let's import the function to `src/router.ts`.
         * `import { createMovie, deleteMovie, findAllMovies, findMovieById, updateMovie } from "./controllers/movieControllers"`
-    * Now creating the router using `patch` as http method.
-        * `.patch("/movie/:id", updateMovie)`
+    * Now creating the router using `patch` as http method and put your middlewares to validate.
+        * `.patch("/movie/:id", movieCreateValidation(), validate, updateMovie)`
 ***
 ## Ending 
 ***

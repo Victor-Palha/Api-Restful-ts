@@ -12,8 +12,8 @@ export default router
     .get("/test", (req:Request, res:Response)=>{
         res.status(200).send("API is working!")
     })
-    .post("/movie", movieCreateValidation(),validate, createMovie)
+    .post("/movie", movieCreateValidation(), validate, createMovie)
     .get("/movie/:id", findMovieById)
     .get("/movie", findAllMovies)
     .delete("/movie/:id", deleteMovie)
-    .patch("/movie/:id", updateMovie)
+    .patch("/movie/:id", movieCreateValidation(), validate, updateMovie)

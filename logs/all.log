@@ -460,3 +460,13 @@
 [32m[39m
 2022-08-16 12:23:22 - [32mhttp[39m: [32mGET /api/movie 200 1593 - 82.264 ms[39m
 [32m[39m
+2022-08-16 12:33:20 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-16 12:33:20 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-16 12:33:27 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-16 12:33:28 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-16 12:33:36 - [32minfo[39m: [32mSuccessful connection to database![39m
+2022-08-16 12:33:36 - [32minfo[39m: [32mServer online on port: 3000[39m
+2022-08-16 12:33:55 - [32mhttp[39m: [32mGET /api/movie 200 1593 - 87.374 ms[39m
+[32m[39m
+2022-08-16 12:34:12 - [32mhttp[39m: [32mPATCH /api/movie/62fadafa09b4e60565a195b7 422 46 - 12.761 ms[39m
+[32m[39m
