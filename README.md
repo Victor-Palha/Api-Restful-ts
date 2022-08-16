@@ -728,3 +728,8 @@ First let's to mongoDB website and copy the URL from our database!
     * Now creating the router using `patch` as http method.
         * `.patch("/movie/:id", updateMovie)`
 ***
+## Ending 
+***
+* Okay guys! now we finish one entire API RESTful and i expect that you guys learn as much i did write this repository. We created routers and connect to databases, learn how to use the http methods and validations middlewares, make customs loggers to see the errors from our application!
+* And probleby have some errors on my english because i challeger myself to write all this application in english to test my skills on NODE.JS and english haha but i really expect that you had fun reading this and learn a lot!
+* Thanks! and see you and another repository!
