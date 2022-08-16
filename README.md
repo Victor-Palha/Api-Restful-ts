@@ -613,3 +613,33 @@ First let's to mongoDB website and copy the URL from our database!
         ]
     }
     ```
+***
+## Get movie by id
+***
+* Now we already have task ready we can make actions for reading
+* Creating GETTERS to database
+    * Go to `controllers/movieControllers.ts`
+    * Let's create a new function to get filme by id
+    * First we create a Async function and put a Try/Catch.
+    * The id will come from parameters of the request
+    ```ts
+    export async function findMovieById(req:Request, res:Response){
+        try {
+            const id = req.params.id
+            const movie = await MovieModel.findById(id)
+            if(!movie){
+                return res.status(404).json({error: "Movie not found!"})
+            }
+            return res.status(200).json(movie)
+        } catch (err: any) {
+            Logger.error(`Error: ${err.message}`)
+        }
+    }
+    ```
+* Creating router
+    * After the creation go to our router file on src and import the function.
+        * `import { createMovie, findMovieById } from "./controllers/`
+    * Now let's create a GET router with dinamic url.
+        * `.get("/movie/:id", findMovieById)`
+    * And is WORKING!
+
