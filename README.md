@@ -668,7 +668,7 @@ First let's to mongoDB website and copy the URL from our database!
 ## Remove movie by Id
 ***
 * To remove a data from our database we will use the same structure from `findMovieById` function.
-* Create function
+* Creating function
     * ```ts
         export async function deleteMovie(req:Request, res:Response){
             try {
@@ -687,7 +687,7 @@ First let's to mongoDB website and copy the URL from our database!
         ```
     * Notice in the end of *try* we use the method `delete()`, this method delete the data that we get from `findById()`
     * Is the same structure that we use to get the movie by id
-* Create Router
+* Creating Router
     * Now we will create a router using the `delete` http method.
     * Go to `src/router.ts` and import the function `deleteMovie`.
         * `import { createMovie, deleteMovie, findAllMovies, findMovieById } from "./controllers/movieControllers"`
@@ -695,3 +695,36 @@ First let's to mongoDB website and copy the URL from our database!
     * Now let's create the router
         * `.delete("/movie/:id", deleteMovie)`
     * And it's ready!
+***
+## Update datas
+***
+* Now let's create a function to update datas from our database.
+* Creating function
+    * Is again the same structure from `findById`.
+    * But now we get the data from body what's be updated and use the method `updateOne()` use the **id** as parameter and the data
+    * ```ts
+        export async function updateMovie(req:Request, res:Response){
+            try {
+
+                const id = req.params.id
+                const data = req.body
+                const movie = await MovieModel.findById(id)
+
+                if(!movie){
+                    return res.status(404).json({error: "Movie not found!"})
+                }
+                
+                await MovieModel.updateOne({_id: id}, data)
+                return res.status(200).json({message: "Movie updated!", data})
+
+            } catch (err: any) {
+                Logger.error(`Erro: ${err}`)
+            }
+        }
+    ```
+* Creating router
+    * Let's import the function to `src/router.ts`.
+        * `import { createMovie, deleteMovie, findAllMovies, findMovieById, updateMovie } from "./controllers/movieControllers"`
+    * Now creating the router using `patch` as http method.
+        * `.patch("/movie/:id", updateMovie)`
+***
