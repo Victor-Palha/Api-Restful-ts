@@ -7,7 +7,7 @@
 * Now, we gonna install the dependencies for development and separate they from dependencies like **express**
     * `npm install config dotenv express express-validator mongoose morgan winston` - (These dependencies are not for development state!)
     * `npm install @types/config @types/express @types/mongoose @types/morgan @types/node ts-node-dev typescript --save-dev` - (They are!)
-* With all dependencies installed, we create one folder called `src` and inside, create one file called `app.ts`
+* With all dependencies installed, we create one folder named `src` and inside, create one file named `app.ts`
 * To hot reload of the application, inside of `package.json` we gonna write inside of `script` this code -> `"dev": "ts-node-dev --respawn --transpile-only src/app.ts"`
 * To test, we gonna write a simple line on **app.ts**, this line is just a classic "HELLO WORLD". `console.log("Hello World From Node")`
 * Your project folder should be like this:
@@ -21,7 +21,7 @@
 ## Integrating express
 ***
 * Let's start express on `app.ts` importing the modules, create middleware to accept JSON data and start the server.
-    * We are using the module *config*, then we gonna create one folder called `config` and create a file called `default.ts` to store sensitive variables.
+    * We are using the module *config*, then we gonna create one folder named `config` and create a file named `default.ts` to store sensitive variables.
     * Inside the file we export the variables, creating one object like that:
     * ![config](img-reposi/config.png)
     ```ts
@@ -51,7 +51,7 @@ app.listen(port,async()=>{
 ***
 ## API test routes
 ***
-* To start with routes, we gonna create a new file called `router.ts` inside the file *src*.
+* To start with routes, we gonna create a new file named `router.ts` inside the file *src*.
 * With the file created, let's import functionalities from express, start the code creating one variable to recibe the this functionalities.
 ![router](img-reposi/router.png)
 
@@ -131,18 +131,18 @@ First let's to mongoDB website and copy the URL from our database!
 
 * Creating configs to database
     * Now we have the URL from ours database, so lets go to file of configurations that we created previously `config/default.ts`.
-    * Inside of object he already created, let's create a new variable called `dbUrl` and it gonna receive our URL.
+    * Inside of object he already created, let's create a new variable named `dbUrl` and it gonna receive our URL.
         * `dbUrl: "mongodb+srv://AshPalha:<password>@cluster0.xdzpwwf.mongodb.net/?retryWrites=true&w=majority"`
     * ![db](img-reposi/mongo2/dbconfig.png)
         * Then we gonna change were is `<passworld>` to yours password that we generate!
 * Creating connection to database
-    * Now let's create one file called `db.ts` in `config` folder.
+    * Now let's create one file named `db.ts` in `config` folder.
     * Import two modules we installed on the beginning of the project: `mongoose` and `config`
         * ```ts
             import mongoose from "mongoose"
             import config from "config"
             ```
-    * Now we gonna create one *async function* to connect, called **connect**
+    * Now we gonna create one *async function* to connect, named **connect**
     * Then we gonna catch our URL to database using the module `config`.
         * `const url = config.get<string>("dbUrl")`
     * Done it we create a Try Catch to connection to tratament for errors!
@@ -153,7 +153,7 @@ First let's to mongoDB website and copy the URL from our database!
                     
                 }
         ```
-    * Inside the Try, we gonna call from mongoose and use one method called `connect` and pass our URL as parameter.
+    * Inside the Try, we gonna call from mongoose and use one method named `connect` and pass our URL as parameter.
         * ```ts
             await mongoose.connect(url)
             console.log("Successful connection to database!")
@@ -176,7 +176,7 @@ First let's to mongoDB website and copy the URL from our database!
 ## Creating environment variables
 ***
 * We gonna create one file to keep yours sensitives varibles, like API key, Database password etc...
-    * First on root, create one file called `.env`.
+    * First on root, create one file named `.env`.
     ![dotenv](img-reposi/env.png)
     * Inside of file we keep any variable what we want.
     * In your case, lets keep the *username* and *password* from database for now
@@ -213,18 +213,18 @@ First let's to mongoDB website and copy the URL from our database!
 * To start with Wiston, we need understand what are this!
     * We gonna use Wiston to improve ours LOGS on terminal
 
-* So let's create a new file called `logger.ts` on folder `config`
+* So let's create a new file named `logger.ts` on folder `config`
     * Now let's import theses modules: `config` and `winston`
     ![looger](img-reposi/logger/logger1.png)
     * You can read more about **Winston** [here](https://kimsereylam.com/typescript/2021/12/03/winston-logger-with-typescript.html)
 
 * Now we go to `config/default.ts` and we gonna create one other attribute on ours object
-    * The new attribute is called `env` and receive on string on value `development`.
+    * The new attribute is named `env` and receive on string on value `development`.
         * `env: "development"`
         * ![logger](img-reposi/logger/logger2.png)
 
 * Done this, we go back to file `logger` and we gonna create a series of configs that gonna describe how our application will behave.
-    * First we create a object called `levels` that gonna describe the level of errors of ours aplication!
+    * First we create a object named `levels` that gonna describe the level of errors of ours aplication!
     ```ts
     const levels = {
         error: 0,
@@ -235,7 +235,7 @@ First let's to mongoDB website and copy the URL from our database!
     }
     ```
 * Now let's create one variable what's going to call one function to receive what environment we are working!
-    * The variable is called `level` and gonna receive ours `env` from `config.ts` and validate the information
+    * The variable is named `level` and gonna receive ours `env` from `config.ts` and validate the information
     ```ts
     const level = ()=>{
         const env = config.get<string>("env") || "development"
@@ -273,7 +273,7 @@ First let's to mongoDB website and copy the URL from our database!
     ```
 
 * Now we gonna create others constants to create erros files
-    * We going to use one method from Winston called `transports`.
+    * We going to use one method from Winston named `transports`.
     * This transports are to create files from erros, we can organize ours erros by folders if we want.
     ```ts
     const transports = [
@@ -312,7 +312,7 @@ First let's to mongoDB website and copy the URL from our database!
 * Start with Morgan.
     * The *Morgan* will make our log be more complete
     * First we going to create one folder to middleware on `src`
-    * Then creating one file called `morganMiddleware.ts`
+    * Then creating one file named `morganMiddleware.ts`
     * Now we going import inside the file ours modules.
     ```ts
     import morgan, {StreamOptions} from "morgan";
@@ -354,10 +354,10 @@ First let's to mongoDB website and copy the URL from our database!
 ***
 * Working with MVC (Model View Controller)
     * To start lets configure our *models*
-    * Let's create one folder on `src` called `models`
+    * Let's create one folder on `src` named `models`
     * let's insert the entities that will allude to our collections of our database
 * Start Model
-    * In the folder what we create, lets create one file called `Movie.ts`
+    * In the folder what we create, lets create one file named `Movie.ts`
     * Whenever we create a new model on TypeScript we going import `model` and `Schema` from mongoose if you are using `mongoDB`
         * `import {model, Schema} from "mongoose"`
 * Creating Schema
@@ -381,7 +381,7 @@ First let's to mongoDB website and copy the URL from our database!
 ## Creating Controller
 ***
 * Start with controllers
-    * In `src` we going to create a folder called `controllers` and inside of folder, let's create one file called `movieControllers.ts`
+    * In `src` we going to create a folder named `controllers` and inside of folder, let's create one file named `movieControllers.ts`
     * Inside of this file we going to work with express, so let's import it
         * `import {Request, Response} from "express"`
     * After this, let's import our Model that we create in last session.
@@ -475,7 +475,7 @@ First let's to mongoDB website and copy the URL from our database!
 * We going create middleware to validation now using Express-validation
 * This middleware will serve as a "joker" to deal with all validations of our system, after we will create validation to each one of ours entities.
 * Let's start
-    * In `middleware` folder, let's create a file called `handleValidation.ts`.
+    * In `middleware` folder, let's create a file named `handleValidation.ts`.
     * After creation let's import the modules.
         * ```ts
             import { Request, Response, NextFunction } from "express"
@@ -483,7 +483,7 @@ First let's to mongoDB website and copy the URL from our database!
         ```
     * Now we'll create a middleware to take all `errors` from the next function that we will create and we'll treat they
 * Create Middleware
-    * Now let's create a *arrow function* in a variable called `validate`, like this:
+    * Now let's create a *arrow function* in a variable named `validate`, like this:
     ```ts
     export const validate = (req:Request, res:Response, next:NextFunction)=>{
         //code...
@@ -497,7 +497,7 @@ First let's to mongoDB website and copy the URL from our database!
                 return next()
             }
         ```
-    * If are no erros on the application, the function `next()` is called and the application run normal!
+    * If are no erros on the application, the function `next()` is named and the application run normal!
     * But if are erros... We going create one array of objects to rescue all erros and return to user one bad request *(422)* from server and show all erros!
     * For theses erros we will use the method `map()` to go through all itens and push into our object.
         * ```ts
@@ -647,7 +647,7 @@ First let's to mongoDB website and copy the URL from our database!
 ***
 * To create one query to all datas from database with MongoDB is really simple.
 * Creating function
-    * In the same file that we create last function we will create a async function called `findAllMovies`, then make a Try/Catch just like the last function
+    * In the same file that we create last function we will create a async function named `findAllMovies`, then make a Try/Catch just like the last function
         * ```ts
             export async function findAllMovies(req:Request, res:Response){
                 try{
@@ -662,7 +662,7 @@ First let's to mongoDB website and copy the URL from our database!
 * Creating router
     * After the creation go to our router file on src and import the function.
         * `import { createMovie, findAllMovies, findMovieById } from "./controllers/`
-    * Now create a GET router called `movie`, we already have a router called `movie` but is a POST router and this is a GET.
+    * Now create a GET router named `movie`, we already have a router named `movie` but is a POST router and this is a GET.
         * `.get("/movie", findAllMovies)`
 ***
 ## Remove movie by Id
